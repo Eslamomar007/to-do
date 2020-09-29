@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>logs page</title>
+    </head>
+<body>
+
+    <form action = '{% url "log-in" %}' method='post'>
+      {% csrf_token %}
+          {% if message %}
+          <label >{{message}}</label><br>
+         {% endif %}
+      <input type="text" placeholder="username" name='username'/>
+      <input type="password" placeholder="password" name ='password' />
+      <button>login</button>
+      <p class="message">have no accuent, <a href='{%url "register"%}'>Create an account</a></p>
+    </form>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends "dolist/base.html" %}
+
+{% block body %}
+<h1>Hello, {{ user.username }}</h1>
+    <h2>Currently logged in as: {{ user.username }}</h2>
+<ul>
+    {%for list in lists%}
+    <li>{{list.goal}} ---- <a href="{%url 'delete' list.id %}"> Done</a> </li>
+    {%empty%}
+    no goals
+    {% endfor %}
+</ul>
+<form action="{% url 'add' %}" method="post">
+          {% csrf_token %}
+    <input type="text" placeholder="job" name='todo'>
+    <input type="submit"  value='add'>
+</form>
+
+<br>
+<br>
+<a href="{% url 'log-out' %}">Logout</a>
+{% endblock %}
